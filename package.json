@@ -1,0 +1,10 @@
+{
+  "name": "afluent",
+  "version": "1.0.0",
+  "description": "Assessment",
+  "main": "index.js",
+  "repository": "http://impact-hafont@git.codesubmit.io/impact/affluent-fullstack-test-hsfzyh",
+  "author": "Heritier Mbumba",
+  "license": "UNLICENCED",
+  "private": true
+}
