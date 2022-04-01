@@ -1,0 +1,54 @@
+.Todo {
+    &-Header {
+        &-Container {
+            background: url("../../../assets/images/bg-mobile-light.jpg");
+            height: 30vh;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-position: top;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+            @media (min-width: 768px) {
+                background: url("../../../assets/images/bg-desktop-light.jpg");
+                background-size: cover;
+            }
+            @media (max-width: 1024px) {}
+            @media (min-width: 1200px) {}
+        }
+
+        &-Dark {
+            background: url("../../../assets/images/bg-mobile-dark.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            @media (min-width: 768px) {
+                background: url("../../../assets/images/bg-desktop-dark.jpg");
+                background-size: cover;
+            }
+        }
+        
+
+        &-Content {
+           
+            width: 100%;
+            padding: 1rem 0;
+            h1 {
+                font-size: 3rem;
+                text-transform: uppercase;
+                letter-spacing: .5rem;
+                font-weight: 600;
+                color: #fff;
+               
+            }
+        }
+        &-Top {
+            display: flex;
+            align-items: center;
+            justify-content:space-between;
+            padding-bottom: 2.5rem;
+        }
+    }
+    
+}

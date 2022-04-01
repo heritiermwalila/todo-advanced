@@ -1,0 +1,27 @@
+.Todo {
+    &-Add {
+        background-color: #fff;
+        display: flex;
+        padding: 1rem 2rem;
+        align-items: center;
+        border-radius: .5rem;
+        
+        input {
+            padding: 1rem;
+            border: 0;
+            width: 90%;
+            font-size:1.2rem
+            
+
+        }
+
+        
+    }
+    &-Checkbox {
+        height: 2rem;
+        width: 2rem;
+        border: 1px solid #ccc;
+        border-radius: 1.5rem;
+        margin-right: .5rem;
+    }
+}

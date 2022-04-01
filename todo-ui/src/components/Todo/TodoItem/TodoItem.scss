@@ -1,0 +1,70 @@
+.Todo {
+    &-Item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        padding: 2rem 2rem;
+        margin: 0 -2rem;
+        &:not(:first-child){
+            border-top: 1px solid #f1f1f1
+        }
+
+        h4 {
+            padding: 5px 0;
+            font-size: 1.4rem;
+        }
+
+        button {
+            border: 0;
+            background: none;
+            cursor: pointer;
+        }
+
+        &-Content {
+            display: flex;
+            
+        }
+
+        &-Dark {
+            &:not(:first-child){
+                border-top: 1px solid rgba(#fff, .1)
+            }
+            
+        }
+
+        
+    }
+
+    &-Stats {
+        span {
+            color: #999;
+            font-weight: 500;
+        }
+    }
+
+    &-Completed {
+        text-decoration: line-through;
+    }
+
+    &-Active {
+        position: relative;
+        background: linear-gradient(to right bottom, rgba(#4895ef, .8), rgba(#b5179e, .4));
+        
+        &::after {
+            content: '';
+            position:absolute;
+            top: 50%;
+            left: 50%;
+            width: 70%;
+            height: 60%;
+            background: url('../../../assets/images/icon-check.svg');
+            border-radius: 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            transform: translate(-50%, -50%)
+
+            
+        }
+    }
+}

@@ -1,5 +1,18 @@
 .App {
   text-align: center;
+
+  &-Container {
+    background-color: #f1f1f1;
+    padding-bottom: 3rem;
+    
+    @media (min-width: 768px) {
+      height: 100%;
+    }
+
+    &-Dark {
+      background-color: #161622
+    }
+  }
 }
 
 .App-logo {

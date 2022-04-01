@@ -1,0 +1,22 @@
+.Todo {
+    &-Body {
+        &-Container {
+            margin-top: -7vh;
+            background-color: #fff;
+            padding: 0 2rem;
+            position: relative;
+            z-index: inherit;
+            margin-left: 2rem;
+            margin-right: 2rem;
+            border-radius: .5rem;
+            box-shadow: 0 .5rem .8rem #ccc;
+            margin-bottom: 2rem;
+        }
+
+        &-Dark {
+            background-color: #25273d;
+            color: #f1f1f1;
+            box-shadow: 0 0 0
+        }
+    }
+}
