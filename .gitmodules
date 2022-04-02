@@ -1,0 +1,6 @@
+[submodule "todo-bck"]
+	path = todo-bck
+	url = https://github.com/heritiermwalila/todo-advanced.git
+[submodule "todo-backend/backend"]
+	path = todo-backend/backend
+	url = https://github.com/heritiermwalila/todo-advanced.git
