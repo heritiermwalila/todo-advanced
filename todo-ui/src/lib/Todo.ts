@@ -1,5 +1,5 @@
 import { TODO_API_HOST_ENDPOINT } from "src/config";
-import { TodoItemType } from "src/type";
+import { TodoItemType, TodoStatus } from "src/type";
 import Api from "./Api";
 
 class Todo extends Api {
@@ -13,9 +13,9 @@ class Todo extends Api {
      * @param name 
      * @returns 
      */
-    async addTodo(name:string){
+    async addTodo(todo: {name: string; status: TodoStatus}){
         try {
-            return await this.request().post('todos', {name})
+            return await this.request().post('todos', {...todo})
         } catch (error) {
             return error
         }
@@ -40,7 +40,7 @@ class Todo extends Api {
      */
     async updateTodo(id:number, todo: TodoItemType): Promise<TodoItemType | undefined> {
         try {
-            return await this.request().get(`todos/${id}`)
+            return await this.request().patch(`todos/${id}`, todo)
         } catch (error) {
             return error
         }
@@ -53,15 +53,15 @@ class Todo extends Api {
      */
     async deleteTodo(id:number): Promise<any> {
         try {
-            return await this.request().delete(`todos/${id}`, null)
+            return await this.request().delete(`todos/${id}`, {})
         } catch (error) {
             return error
         }
     }
 
-    async clearAllCompleted(): Promise<number[]> {
+    async clearAllCompleted(): Promise<{success: boolean}> {
         try {
-            return await this.request().post('todos/clear-completed', null)
+            return await this.request().post('todos/clear', {})
         } catch (error) {
             return error
         }

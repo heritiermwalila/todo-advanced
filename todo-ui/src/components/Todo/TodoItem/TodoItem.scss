@@ -41,6 +41,9 @@
             color: #999;
             font-weight: 500;
         }
+        @media (min-width: 768px) {
+            display: none;
+         }
     }
 
     &-Completed {
@@ -66,5 +69,13 @@
 
             
         }
+    }
+    &-Clear {
+        cursor: pointer;
+    }
+    &-Empty {
+        padding: 2rem;
+        text-align: center;
+        color: #999;
     }
 }

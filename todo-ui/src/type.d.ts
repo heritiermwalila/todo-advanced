@@ -1,4 +1,4 @@
-export type TodoStatus = 'Active' | 'Inactive' | 'Completed';
+export type TodoStatus = 'Incomplete' | 'Completed';
 
 export type TodoItemType = {
     name: string;
@@ -20,7 +20,7 @@ export interface ITodoContext {
     error?: string | null;
     isLoading?: boolean;
     isRequesting?: boolean;
-    onAddTodo?: (name: string) => Promise<void>;
+    onAddTodo?: (todo: {name: string; status?: TodoStatus}) => Promise<void>;
     onGetTodos?: () => void;
     onGetTodo?: (id: number) => void;
     onDeleteTodo?: (id: number) => Promise<void>

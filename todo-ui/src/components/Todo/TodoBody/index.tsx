@@ -44,11 +44,17 @@ export const TodoBody  = ({filter}:TodoBodyProps) => {
     const filteredTodos = React.useMemo(() => {
         return todos?.filter(todo => {
             if(filter === 'Active'){
-                return todo.status === 'Active'
+                return todo.status === 'Incomplete'
             }else if(filter === 'Completed'){
                 return todo.status === 'Completed'
             }
             return todo
+        }).sort((t1, t2) => {
+            if(t1.status === 'Completed'){
+                return -1
+            }
+           
+            return 0
         })
     }, [filter, todos, isRequesting]) ?? []
   

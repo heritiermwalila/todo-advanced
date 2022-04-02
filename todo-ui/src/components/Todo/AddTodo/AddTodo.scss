@@ -2,17 +2,32 @@
     &-Add {
         background-color: #fff;
         display: flex;
-        padding: 1rem 2rem;
+        padding: 1.2rem 2rem;
         align-items: center;
         border-radius: .5rem;
+        position: relative;
+
+       
         
         input {
             padding: 1rem;
             border: 0;
             width: 90%;
-            font-size:1.2rem
-            
+            font-size:1.5rem;
+            &:focus {
+                outline: none
+            }
 
+        }
+
+        &-Error {
+            position: absolute;
+            bottom:0;
+            left: 30%;
+            transform: translateX(-50%);
+            padding: .5rem;
+            font-size: 1.2rem;
+            color: red;
         }
 
         
@@ -23,5 +38,21 @@
         border: 1px solid #ccc;
         border-radius: 1.5rem;
         margin-right: .5rem;
+        cursor: pointer;
+        
+        &:hover {
+            position: relative;
+            &::after {
+                position: absolute;
+                top: -.4rem;
+                left: -.4rem;
+                bottom: -.4rem;
+                right: -.4rem;
+                background: linear-gradient(red, blue);
+                content: "";
+                z-index: -1;
+                border-radius: 100%;
+            }
+        }
     }
 }

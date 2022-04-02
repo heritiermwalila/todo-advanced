@@ -1,5 +1,6 @@
 import React from 'react'
 import { useApp } from 'src/context/App'
+import { useTodo } from 'src/context/Todo';
 import { TodoFilter } from 'src/type'
 import './TodoFooter.scss'
 
@@ -14,9 +15,14 @@ const FILTERS: TodoFilter[] = ['All', 'Active', 'Completed']
 export const TodoFooter = ({filter, onChangeFilter}: TodoFooterProps) => {
     
     const {mode} = useApp()
+    const {todos, onClearCompleted} = useTodo()
     
     return <div className={`Todo-Footer-Container ${mode === 'dark' ? 'Todo-Footer-Dark' : ''}`}>
+        <p className="Todo-Footer-Items">
+                <span>{todos?.length} items left</span>
+            </p>
         <ul>
+            
             {
                 FILTERS?.map(item => ( 
                 <li 
@@ -27,15 +33,12 @@ export const TodoFooter = ({filter, onChangeFilter}: TodoFooterProps) => {
                     <span>{item}</span>
                 </li>))
             }
-            {/* <li className="Todo-Footer-Active">
-                <span>All</span>
-            </li>
-            <li>
-                <span>Active</span>
-            </li>
-            <li>
-                <span>Completed</span>
-            </li> */}
+
+           
+            
         </ul>
+        <p className="Todo-Footer-Clear">
+                <span className="Todo-Clear" onClick={() =>onClearCompleted?.()}>Clear Completed</span>
+            </p>
     </div>
 }

@@ -18,8 +18,8 @@ const TodoContainer = () => {
         <TodoProvider>
             <TodoHeader />
             <TodoBody {...{filter}}/>
+            <TodoFooter {...{filter, onChangeFilter}}/>
         </TodoProvider>
-        <TodoFooter {...{filter, onChangeFilter}}/>
 
         <div className="text__center text-gray">
             <p>Drag and drop to reorder list</p>

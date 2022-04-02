@@ -1,6 +1,6 @@
 import React from 'react';
 import Todo from 'src/lib/Todo';
-import { ITodoContext, TodoItemType } from 'src/type';
+import { ITodoContext, TodoItemType, TodoStatus } from 'src/type';
 
 const TodoService = new Todo()
 
@@ -37,10 +37,14 @@ export default function TodoProvider({children}: TodoProviderProps){
         
     }, [todos])
 
-    const onAddTodo = async (name: string) => {
+    /**
+     * Add new todo
+     * @param newtodo 
+     */
+    const onAddTodo = async (newtodo: {name: string; status: TodoStatus}) => {
         try {
         
-            const todo = await TodoService.addTodo(name)
+            const todo = await TodoService.addTodo(newtodo)
             if(todo){
                 onGetTodos()
             }
@@ -49,6 +53,9 @@ export default function TodoProvider({children}: TodoProviderProps){
         }
     }
 
+    /**
+     * Get all todos
+     */
     const onGetTodos = async () => {
         try {
             setError(null)
@@ -65,16 +72,21 @@ export default function TodoProvider({children}: TodoProviderProps){
     }
 
 
+    /**
+     * Update a todo
+     * @param todo 
+     */
     const onUpdateTodo = async (todo: TodoItemType) => {
         try {
             setError(null)
             setIsRequesting(true)
             const req = await TodoService.updateTodo(todo.id!, todo)
             if(req){
-                const all = todos.filter(t => t.id !== todo.id)
-                all.push(req)
-                setTodos(all)
-                setIsRequesting(false)
+                onGetTodos()
+                // const all = todos.filter(t => t.id !== todo.id)
+                // all.push(req)
+                // setTodos(all)
+                // setIsRequesting(false)
             }
         } catch (error) {
             setError(error?.message)
@@ -82,14 +94,15 @@ export default function TodoProvider({children}: TodoProviderProps){
         }
     }
 
+    /**
+     * Clear all completed todos
+     */
     const onClearCompleted = async () => {
         try {
             const clearAllCompleted = await TodoService.clearAllCompleted()
 
-            if(clearAllCompleted?.length > 0){
-                const allTodos = todos.slice()?.filter(t => !clearAllCompleted.includes(t.id!))
-                setTodos(allTodos)
-                setIsRequesting(false)
+            if(clearAllCompleted?.success){
+                onGetTodos()
             }
 
         } catch (error) {
@@ -105,6 +118,7 @@ export default function TodoProvider({children}: TodoProviderProps){
                 onGetTodos()
             }
         } catch (error) {
+            console.log(error);
             
         }
     }

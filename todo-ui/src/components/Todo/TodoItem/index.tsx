@@ -17,17 +17,25 @@ export const TodoItem = ({id, name, status, onActiveTodo}: TodoItemProps) => {
 
     const {mode} = useApp()
 
-    const {onDeleteTodo} = useTodo()
+    const {onDeleteTodo, onUpdateTodo} = useTodo()
     
 
     React.useEffect(() => {
         console.log(id, name, status);
     }, [])
 
+    const getNextStatus = (status: TodoStatus):TodoStatus  => {
+        if(status === 'Completed'){
+            return 'Incomplete'
+        }
+        return 'Completed'
+        
+    }
+
 
     return <li className={`Todo-Item ${mode === 'dark' ? 'Todo-Item-Dark': ''}`}>
         <div className="Todo-Item-Content">
-            <div className={`Todo-Checkbox ${status === 'Active' ? 'Todo-Active' : ''}`} onClick={() => onActiveTodo?.(id!)}></div>
+            <div className={`Todo-Checkbox ${status === 'Completed' ? 'Todo-Active' : ''}`} onClick={() => onUpdateTodo?.({id, name, status: getNextStatus(status)})}></div>
             <div className={status === 'Completed' ? 'Todo-Completed' : ''}>
                 <h4>{name}</h4>
             </div>
